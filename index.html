@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Feliz cumpleaños, mi loviny 🦖❤️⭐</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💜</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Quicksand:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --morado:#9b4dca; --morado-claro:#c99bff; --borgona:#800020; --borgona-claro:#b3203f;
+  --rojo:#ff2a4f; --oro:#ffd36e; --fondo:#12030f; --texto:#f7e9ff;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Quicksand',sans-serif;color:var(--texto);
+  background:radial-gradient(ellipse at top,#3a0b3f 0%,#1d0520 45%,var(--fondo) 100%) fixed;
+  overflow-x:hidden;min-height:100vh;
+}
+body.locked{overflow:hidden}
+.script{font-family:'Great Vibes',cursive;font-weight:400}
+button{font-family:inherit;cursor:pointer}
+
+/* ---------- capas de fondo ---------- */
+#estrellasFondo,#teamoFondo,#petalos{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+.est{position:absolute;width:2px;height:2px;background:#fff;border-radius:50%;animation:titila 3s infinite ease-in-out}
+@keyframes titila{0%,100%{opacity:.15}50%{opacity:1}}
+.teamo-flota{position:absolute;bottom:-40px;font-size:14px;color:var(--morado-claro);opacity:.13;white-space:nowrap;animation:subir linear forwards}
+@keyframes subir{to{transform:translateY(-115vh) rotate(8deg)}}
+.petalo{position:absolute;top:-30px;width:14px;height:18px;border-radius:70% 0 70% 0;opacity:.7;animation:caer linear forwards}
+@keyframes caer{to{transform:translate(var(--dx),110vh) rotate(720deg)}}
+#fx{position:fixed;inset:0;pointer-events:none;z-index:50}
+
+/* ---------- candado ---------- */
+#candado{
+  position:fixed;inset:0;z-index:100;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  background:radial-gradient(circle at center,#3d0c40 0%,#12030f 75%);text-align:center;padding:24px;transition:opacity 1.2s, visibility 1.2s;
+}
+#candado.abierto{opacity:0;visibility:hidden}
+#candado .sobre{font-size:70px;animation:latido 1.4s infinite}
+@keyframes latido{0%,100%{transform:scale(1)}15%{transform:scale(1.15)}30%{transform:scale(1)}45%{transform:scale(1.1)}}
+#candado h1{font-size:clamp(40px,10vw,70px);margin:10px 0 4px;color:#fff;text-shadow:0 0 20px var(--morado)}
+#candado p{opacity:.85;margin-bottom:22px}
+#clave{
+  background:rgba(255,255,255,.08);border:2px solid var(--morado-claro);color:#fff;border-radius:40px;
+  padding:14px 22px;font-size:20px;text-align:center;width:230px;outline:none;letter-spacing:3px;font-family:inherit
+}
+#clave.mal{animation:sacude .4s}
+@keyframes sacude{0%,100%{transform:translateX(0)}25%{transform:translateX(-10px)}75%{transform:translateX(10px)}}
+.btn{
+  margin-top:16px;background:linear-gradient(135deg,var(--morado),var(--borgona-claro));border:none;color:#fff;
+  padding:13px 30px;border-radius:40px;font-size:17px;font-weight:700;box-shadow:0 6px 25px rgba(155,77,202,.5);transition:transform .2s
+}
+.btn:active{transform:scale(.95)}
+.pista{font-size:13px;opacity:.6;margin-top:14px}
+
+/* ---------- secciones ---------- */
+section{position:relative;z-index:2;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:70px 20px;text-align:center}
+.titulo{font-size:clamp(46px,11vw,92px);line-height:1.05;color:#fff;text-shadow:0 0 25px rgba(201,155,255,.7)}
+.sub{font-size:clamp(16px,4vw,21px);opacity:.9;max-width:620px;margin:14px auto 0;line-height:1.6}
+.emojis{font-size:30px;letter-spacing:6px;margin-top:10px}
+.reveal{opacity:0;transform:translateY(40px);transition:opacity 1.1s ease,transform 1.1s ease}
+.reveal.visible{opacity:1;transform:none}
+.etiqueta{font-size:13px;letter-spacing:4px;text-transform:uppercase;color:var(--oro);margin-bottom:10px}
+
+/* hero */
+.veintidos{font-size:clamp(110px,30vw,220px);font-weight:700;line-height:1;margin-top:10px;
+  background:linear-gradient(120deg,#fff,var(--morado-claro),var(--rojo),var(--oro),#fff);background-size:300%;
+  -webkit-background-clip:text;background-clip:text;color:transparent;animation:brillo 6s linear infinite;filter:drop-shadow(0 0 25px rgba(255,42,79,.45))}
+@keyframes brillo{to{background-position:300% 0}}
+.bajar{position:absolute;bottom:26px;font-size:14px;opacity:.7;animation:flota 2s infinite}
+@keyframes flota{50%{transform:translateY(8px)}}
+
+/* pastel */
+.pastel{position:relative;width:260px;height:250px;margin:50px auto 10px}
+.piso{position:absolute;left:50%;transform:translateX(-50%);border-radius:14px}
+.p1{bottom:0;width:260px;height:95px;background:linear-gradient(#a3295a,#6e0f2c)}
+.p2{bottom:85px;width:200px;height:80px;background:linear-gradient(#b26be0,#7b2fa8)}
+.crema{position:absolute;top:-6px;left:-4px;right:-4px;height:22px;border-radius:12px;background:#fff0fb}
+.crema::after{content:"";position:absolute;bottom:-12px;left:6px;right:6px;height:16px;
+  background:radial-gradient(circle at 10px 0,#fff0fb 9px,transparent 10px) 0 0/22px 16px repeat-x}
+.plato{position:absolute;bottom:-14px;left:50%;transform:translateX(-50%);width:300px;height:22px;border-radius:50%;background:linear-gradient(#e7d2ef,#9b84a6)}
+.adorno{position:absolute;font-size:18px}
+.velas{position:absolute;bottom:160px;left:50%;transform:translateX(-50%);display:flex;gap:10px}
+.vela{position:relative;font-size:74px;font-weight:700;color:#ffe3f3;text-shadow:0 0 0 #fff, 3px 3px 0 #d14d8a;line-height:1;cursor:pointer}
+.llama{position:absolute;top:-36px;left:50%;width:18px;height:30px;margin-left:-9px;border-radius:50% 50% 50% 50%/60% 60% 40% 40%;
+  background:radial-gradient(circle at 50% 70%,#fff 0 20%,#ffd36e 35%,#ff7b00 70%,transparent 72%);animation:baila .15s infinite alternate;filter:drop-shadow(0 0 12px #ffb347)}
+@keyframes baila{from{transform:rotate(-4deg) scaleY(1)}to{transform:rotate(4deg) scaleY(1.08)}}
+.vela.apagada .llama{animation:apaga .5s forwards}
+@keyframes apaga{to{opacity:0;transform:scaleY(.2) translateY(10px)}}
+.humo{position:absolute;top:-40px;left:50%;width:8px;height:8px;border-radius:50%;background:rgba(220,220,220,.5);opacity:0;pointer-events:none}
+.vela.apagada .humo{animation:humo 2s .3s ease-out forwards}
+@keyframes humo{0%{opacity:.8;transform:translate(-50%,0) scale(1)}100%{opacity:0;transform:translate(-30%,-70px) scale(5)}}
+.botones{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
+.btn.sec{background:rgba(255,255,255,.1);box-shadow:none;border:1px solid var(--morado-claro)}
+#medidor{width:200px;height:6px;background:rgba(255,255,255,.12);border-radius:6px;margin:14px auto 0;overflow:hidden;display:none}
+#medidor div{height:100%;width:0;background:linear-gradient(90deg,var(--morado-claro),var(--rojo));transition:width .08s}
+#deseo{font-size:clamp(34px,8vw,56px);margin-top:18px;min-height:60px;color:#fff;opacity:0;transition:opacity 1.5s}
+
+/* hilo rojo */
+#hiloWrap{position:relative;width:100%;max-width:1000px;height:min(62vh,520px);margin-top:20px;touch-action:none}
+#hilo{width:100%;height:100%;display:block;cursor:grab}
+.frase-hilo{font-size:clamp(30px,7.5vw,50px);color:#ffd9e2;text-shadow:0 0 18px var(--rojo);margin-top:6px;max-width:800px}
+.nota{font-size:13px;opacity:.6;margin-top:10px}
+
+/* juego */
+.tablero{width:100%;max-width:640px;margin-top:26px}
+#respuesta{min-height:110px;border:2px dashed rgba(201,155,255,.5);border-radius:18px;padding:16px;display:flex;flex-wrap:wrap;gap:10px;justify-content:center;align-items:center;background:rgba(255,255,255,.04)}
+#respuesta:empty::before{content:"Toca las palabras en el orden correcto…";opacity:.45;font-size:15px}
+#fichas{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:22px}
+.ficha{background:linear-gradient(135deg,#6a1f8f,#8f1b42);border:1px solid rgba(255,255,255,.25);color:#fff;padding:11px 18px;border-radius:14px;font-size:18px;font-weight:700;box-shadow:0 5px 15px rgba(0,0,0,.35);transition:transform .25s,opacity .25s;user-select:none}
+.ficha:hover{transform:translateY(-3px)}
+.ficha.error{animation:sacude .4s;background:#5a0d1e}
+.ficha.puesta{animation:pop .35s}
+@keyframes pop{0%{transform:scale(.4)}70%{transform:scale(1.15)}100%{transform:scale(1)}}
+.ficha.brilla{background:linear-gradient(135deg,var(--oro),#ff8fb1);color:#4a0a24}
+#premioJuego{margin-top:24px;font-size:clamp(30px,7vw,46px);opacity:0;transition:opacity 1.4s;color:#fff;text-shadow:0 0 20px var(--morado)}
+
+/* manos */
+.manos{display:flex;align-items:center;justify-content:center;height:150px;margin:30px 0 10px;font-size:70px;user-select:none}
+.mano{transition:transform .15s linear;display:inline-block}
+#anillo{position:relative;width:130px;height:130px;margin:0 auto;touch-action:none;user-select:none;-webkit-user-select:none}
+#anillo svg{position:absolute;inset:0;transform:rotate(-90deg)}
+#anillo .centro{position:absolute;inset:14px;border-radius:50%;background:linear-gradient(135deg,var(--morado),var(--borgona));display:flex;align-items:center;justify-content:center;font-weight:700;font-size:15px;box-shadow:0 0 30px rgba(155,77,202,.6);-webkit-touch-callout:none}
+#fraseManos{font-size:clamp(32px,7.5vw,54px);margin-top:28px;opacity:0;transition:opacity 1.5s;color:#fff;max-width:760px;text-shadow:0 0 20px var(--rojo)}
+
+/* contador */
+.contador{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin-top:28px}
+.caja{background:rgba(255,255,255,.06);border:1px solid rgba(201,155,255,.35);border-radius:18px;padding:18px 10px;min-width:110px;backdrop-filter:blur(4px)}
+.caja b{display:block;font-size:clamp(34px,9vw,52px);color:#fff;font-variant-numeric:tabular-nums}
+.caja span{font-size:13px;letter-spacing:2px;text-transform:uppercase;opacity:.7}
+
+/* galería */
+#galeria{display:flex;flex-wrap:wrap;gap:22px;justify-content:center;max-width:1100px;margin-top:30px}
+.polaroid{background:#fff;padding:10px 10px 38px;border-radius:4px;box-shadow:0 12px 35px rgba(0,0,0,.5);width:min(42vw,220px);transition:transform .4s;cursor:pointer;position:relative}
+.polaroid img{width:100%;aspect-ratio:1;object-fit:cover;display:block}
+.polaroid::after{content:"💜";position:absolute;bottom:9px;left:0;right:0;text-align:center;font-size:16px}
+.polaroid:hover{transform:rotate(0) scale(1.06)!important;z-index:3}
+#visor{position:fixed;inset:0;background:rgba(10,0,10,.92);z-index:90;display:none;align-items:center;justify-content:center;padding:20px}
+#visor img{max-width:100%;max-height:88vh;border-radius:10px;box-shadow:0 0 50px rgba(155,77,202,.6)}
+
+/* estrellas razones */
+#cielo{position:relative;width:100%;max-width:900px;height:min(70vh,560px);margin-top:20px;border-radius:24px;background:radial-gradient(ellipse at center,rgba(70,20,90,.5),transparent 70%)}
+.razon{position:absolute;font-size:26px;cursor:pointer;transform:translate(-50%,-50%);transition:transform .3s,filter .3s;filter:drop-shadow(0 0 8px var(--oro));animation:titila2 2.5s infinite}
+@keyframes titila2{50%{filter:drop-shadow(0 0 2px var(--oro));transform:translate(-50%,-50%) scale(.85)}}
+.razon.vista{animation:none;filter:drop-shadow(0 0 14px var(--morado-claro));opacity:.55}
+#textoRazon{min-height:80px;font-size:clamp(18px,4.5vw,24px);max-width:620px;margin-top:16px;line-height:1.5;transition:opacity .4s}
+#cuentaRazones{font-size:14px;opacity:.65;margin-top:6px}
+
+/* carta */
+.carta{max-width:680px;width:100%;margin-top:26px;background:linear-gradient(160deg,#fff7fb,#f3e3ff);color:#3b0a2a;border-radius:16px;padding:34px 28px;text-align:left;box-shadow:0 20px 60px rgba(0,0,0,.5);position:relative}
+.carta::before{content:"🦖❤️⭐";position:absolute;top:-20px;right:22px;font-size:30px}
+#textoCarta{white-space:pre-wrap;font-size:clamp(16px,4vw,19px);line-height:1.75;min-height:200px}
+#textoCarta .cursor{display:inline-block;width:2px;height:1.1em;background:#800020;vertical-align:middle;animation:parpadea .8s infinite}
+@keyframes parpadea{50%{opacity:0}}
+.firma{font-size:36px;color:var(--borgona);margin-top:14px;text-align:right;opacity:0;transition:opacity 1.5s}
+
+/* final */
+#final{min-height:100vh;padding-bottom:0}
+#teamoCanvas{width:100%;max-width:1000px;height:min(45vh,360px);display:block;margin-top:10px}
+#ramo{width:100%;max-width:700px;height:260px;margin-top:10px}
+.tallo{transform-origin:bottom;transform:scaleY(0);transition:transform 1.6s ease-out}
+.flor{transform-box:fill-box;transform-origin:center;transform:scale(0);transition:transform 1.2s cubic-bezier(.34,1.56,.64,1)}
+#ramo.crece .tallo{transform:scaleY(1)}
+#ramo.crece .flor{transform:scale(1)}
+.almita{font-size:clamp(40px,10vw,70px);color:#fff;text-shadow:0 0 25px var(--morado);margin-top:10px}
+footer{position:relative;z-index:2;text-align:center;padding:30px 20px 50px;opacity:.6;font-size:14px}
+
+/* memorama */
+#memo{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;width:100%;max-width:440px;margin-top:24px}
+.mcard{aspect-ratio:3/4;perspective:800px;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.mcard .in{position:relative;width:100%;height:100%;transition:transform .5s;transform-style:preserve-3d}
+.mcard.vol .in{transform:rotateY(180deg)}
+.mcard .cara{position:absolute;inset:0;border-radius:12px;backface-visibility:hidden;-webkit-backface-visibility:hidden;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.mcard .dorso{background:linear-gradient(135deg,#6a1f8f,#8f1b42);border:1px solid rgba(255,255,255,.25);font-size:20px;box-shadow:0 5px 15px rgba(0,0,0,.35)}
+.mcard .frente{background:#fff7fb;transform:rotateY(180deg);font-size:clamp(28px,8vw,42px)}
+.mcard .frente img{width:100%;height:100%;object-fit:cover}
+.mcard.ok .frente{box-shadow:0 0 0 3px #ffd36e,0 0 22px #ffd36e}
+.memo-info{margin-top:14px;display:flex;gap:12px;align-items:center;justify-content:center;font-size:15px;opacity:.85}
+.btn.chico{margin-top:0;padding:6px 16px;font-size:14px}
+.premio{margin-top:22px;font-size:clamp(28px,7vw,44px);opacity:0;transition:opacity 1.4s;color:#fff;text-shadow:0 0 20px var(--morado);max-width:720px}
+
+/* atrapa mi corazón */
+#atrapaWrap{position:relative;width:100%;max-width:480px;height:min(60vh,520px);margin-top:22px;border-radius:22px;overflow:hidden;background:linear-gradient(180deg,rgba(70,15,80,.55),rgba(30,5,30,.8));border:1px solid rgba(201,155,255,.3)}
+#atrapa{width:100%;height:100%;display:block;touch-action:pan-y}
+#atrapaUI{position:absolute;top:10px;left:14px;right:14px;display:flex;justify-content:space-between;font-weight:700;font-size:17px;pointer-events:none}
+#atrapaOverlay{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;background:rgba(18,3,15,.55);gap:6px;padding:20px}
+#atrapaMsg{font-size:clamp(26px,7vw,38px);color:#fff}
+
+/* vales para raspar */
+#vales{display:grid;grid-template-columns:repeat(2,minmax(0,220px));gap:14px;justify-content:center;margin-top:26px;width:100%}
+.vale{position:relative;height:160px;border-radius:16px;background:linear-gradient(160deg,#fff7fb,#f0dcff);color:#4a0a24;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:12px;text-align:center;box-shadow:0 10px 30px rgba(0,0,0,.45);overflow:hidden;border:2px dashed #c99bff}
+.vale .ico{font-size:34px}
+.vale .txt{font-size:clamp(13px,3.6vw,16px);font-weight:700;margin-top:6px;line-height:1.35}
+.vale canvas{position:absolute;inset:0;width:100%;height:100%;touch-action:none;cursor:crosshair;transition:opacity .8s}
+.vale.listo canvas{opacity:0;pointer-events:none}
+
+/* pregunta */
+#preguntaZona{position:relative;width:100%;max-width:520px;height:230px;margin-top:20px}
+#preguntaZona .btn{position:absolute;top:50%;margin:0;transition:left .25s,top .25s,transform .25s;white-space:nowrap}
+#btnSi{left:32%;z-index:2}
+#btnNo{left:68%}
+
+/* dino */
+#dino{position:fixed;bottom:12px;left:110vw;font-size:44px;z-index:40;cursor:pointer;user-select:none}
+#dino.camina{animation:camina 16s linear forwards}
+@keyframes camina{0%{left:105vw}100%{left:-80px}}
+#dino .paso{display:inline-block;animation:salto .4s infinite alternate}
+@keyframes salto{to{transform:translateY(-6px)}}
+#globo{position:absolute;bottom:58px;left:-20px;background:#fff;color:var(--borgona);font-size:14px;font-weight:700;padding:8px 12px;border-radius:14px;white-space:nowrap;opacity:0;transition:opacity .3s;pointer-events:none}
+#globo.ver{opacity:1}
+
+/* música */
+#musicaBtn{position:fixed;top:14px;right:14px;z-index:60;width:48px;height:48px;border-radius:50%;border:1px solid var(--morado-claro);background:rgba(30,5,30,.7);color:#fff;font-size:20px;display:none;backdrop-filter:blur(6px)}
+</style>
+</head>
+<body class="locked">
+
+<div id="estrellasFondo"></div>
+<div id="teamoFondo"></div>
+<div id="petalos"></div>
+<canvas id="fx"></canvas>
+
+<!-- ============ CANDADO ============ -->
+<div id="candado">
+  <div class="sobre">💌</div>
+  <h1 class="script">Para mi loviny</h1>
+  <p>Esta sorpresa solo se abre con nuestra fecha especial 🦖❤️⭐</p>
+  <input id="clave" inputmode="numeric" placeholder="dd/mm" maxlength="10" autocomplete="off">
+  <button class="btn" id="abrir">Abrir 💜</button>
+  <div class="pista">Pista: el día que empezó lo nuestro</div>
+</div>
+
+<!-- ============ HERO ============ -->
+<section id="inicio">
+  <div class="etiqueta reveal">20 · 11 · 2026</div>
+  <h1 class="titulo script reveal">Feliz cumpleaños,<br>mi niña</h1>
+  <div class="veintidos reveal">22</div>
+  <p class="sub reveal">Hoy celebra el mundo entero, porque un día como hoy nació la persona que le da sentido al mío.</p>
+  <div class="emojis reveal">🦖❤️⭐</div>
+  <div class="bajar">desliza hacia abajo ↓</div>
+</section>
+
+<!-- ============ PASTEL ============ -->
+<section id="pastelSec">
+  <div class="etiqueta reveal">Primero lo primero</div>
+  <h2 class="titulo script reveal">Pide un deseo, amochito</h2>
+  <p class="sub reveal">Cierra los ojos, piensa en tu deseo… y sopla las velas (de verdad, al micrófono 🎤) o tócalas.</p>
+  <div class="pastel reveal">
+    <div class="velas">
+      <div class="vela" data-v="0">2<div class="llama"></div><div class="humo"></div></div>
+      <div class="vela" data-v="1">2<div class="llama"></div><div class="humo"></div></div>
+    </div>
+    <div class="piso p2"><div class="crema"></div>
+      <span class="adorno" style="left:22px;top:34px">🦖</span><span class="adorno" style="left:88px;top:38px">💜</span><span class="adorno" style="right:22px;top:34px">⭐</span>
+    </div>
+    <div class="piso p1"><div class="crema"></div>
+      <span class="adorno" style="left:26px;top:44px">🌸</span><span class="adorno" style="left:80px;top:48px">❤️</span><span class="adorno" style="left:134px;top:44px">🌷</span><span class="adorno" style="right:28px;top:48px">💐</span>
+    </div>
+    <div class="plato"></div>
+  </div>
+  <div class="botones reveal" style="margin-top:30px">
+    <button class="btn" id="btnMic">🎤 Soplar al micrófono</button>
+    <button class="btn sec" id="btnSoplar">💨 Soplar con un toque</button>
+  </div>
+  <div id="medidor"><div></div></div>
+  <div id="deseo" class="script">¡Que se cumplan todos tus deseos! Te amo 💜</div>
+</section>
+
+<!-- ============ HILO ROJO ============ -->
+<section id="hiloSec">
+  <div class="etiqueta reveal">El hilo rojo del destino</div>
+  <p class="sub reveal">Dice una leyenda que un hilo rojo invisible une a quienes están destinados a encontrarse, sin importar el tiempo, el lugar ni las circunstancias.</p>
+  <div id="hiloWrap" class="reveal"><canvas id="hilo"></canvas></div>
+  <div class="frase-hilo script reveal">Puede estirarse, puede enredarse… pero jamás romperse.<br>Y el mío siempre me lleva a ti.</div>
+  <div class="nota reveal">Jala el hilo con tu dedo — intenta romperlo 😉</div>
+</section>
+
+<!-- ============ JUEGO ============ -->
+<section id="juegoSec">
+  <div class="etiqueta reveal">Un pequeño juego</div>
+  <h2 class="titulo script reveal">Ordena la frase</h2>
+  <p class="sub reveal">Toca las palabras en el orden correcto para descubrir algo que quiero que tengas siempre presente.</p>
+  <div class="tablero reveal">
+    <div id="respuesta"></div>
+    <div id="fichas"></div>
+    <div class="botones" style="margin-top:18px"><button class="btn sec" id="btnPista">💡 Pista</button><button class="btn sec" id="btnReinicio">↺ Reiniciar</button></div>
+  </div>
+  <div id="premioJuego" class="script">Y lo que nunca debes olvidar… es que te amo 🦖❤️⭐</div>
+</section>
+
+<!-- ============ MEMORAMA ============ -->
+<section id="memoSec">
+  <div class="etiqueta reveal">Juego de memoria</div>
+  <h2 class="titulo script reveal">Encuentra las parejas</h2>
+  <p class="sub reveal">Como nosotros: cada uno tiene su pareja perfecta 💜</p>
+  <div id="memo" class="reveal"></div>
+  <div class="memo-info reveal"><span id="memoMov">0 movimientos</span><button class="btn sec chico" id="memoReset">↺ Reiniciar</button></div>
+  <div id="memoPremio" class="script premio">¡Lo lograste! Igual que tú y yo: hechos el uno para el otro 🦖❤️⭐</div>
+</section>
+
+<!-- ============ MANOS ============ -->
+<section id="manosSec">
+  <div class="etiqueta reveal">Una promesa</div>
+  <h2 class="titulo script reveal">Toma mi mano</h2>
+  <p class="sub reveal">Mantén presionado el círculo hasta que nuestras manos se encuentren.</p>
+  <div class="manos reveal"><span class="mano" id="manoIzq">🫱</span><span class="mano" id="manoDer">🫲</span></div>
+  <div id="anillo" class="reveal">
+    <svg viewBox="0 0 130 130"><circle cx="65" cy="65" r="60" fill="none" stroke="rgba(255,255,255,.15)" stroke-width="7"/>
+      <circle id="progreso" cx="65" cy="65" r="60" fill="none" stroke="url(#gradA)" stroke-width="7" stroke-linecap="round" stroke-dasharray="377" stroke-dashoffset="377"/>
+      <defs><linearGradient id="gradA"><stop offset="0" stop-color="#c99bff"/><stop offset="1" stop-color="#ff2a4f"/></linearGradient></defs></svg>
+    <div class="centro" id="centroAnillo">Mantén<br>presionado</div>
+  </div>
+  <div id="fraseManos" class="script">No sueltes mi mano,<br>que yo no soltaré la tuya 🤍</div>
+</section>
+
+<!-- ============ CONTADOR ============ -->
+<section id="contadorSec">
+  <div class="etiqueta reveal">Desde el 04 · 08 · 2026</div>
+  <h2 class="titulo script reveal">Almita con almita</h2>
+  <p class="sub reveal">Este es el tiempo que llevamos juntos… y no pienso dejar de contar.</p>
+  <div class="contador reveal">
+    <div class="caja"><b id="cDias">0</b><span>días</span></div>
+    <div class="caja"><b id="cHoras">0</b><span>horas</span></div>
+    <div class="caja"><b id="cMin">0</b><span>minutos</span></div>
+    <div class="caja"><b id="cSeg">0</b><span>segundos</span></div>
+  </div>
+  <p class="sub reveal" id="latidos" style="font-size:15px;opacity:.7"></p>
+</section>
+
+<!-- ============ GALERÍA (se muestra solo si hay fotos en /fotos) ============ -->
+<section id="galeriaSec" style="display:none">
+  <div class="etiqueta reveal">Nuestros momentos</div>
+  <h2 class="titulo script reveal">Tú y yo</h2>
+  <div id="galeria"></div>
+</section>
+
+<!-- ============ ATRAPA MI CORAZÓN ============ -->
+<section id="atrapaSec">
+  <div class="etiqueta reveal">Minijuego</div>
+  <h2 class="titulo script reveal">Atrapa mi corazón</h2>
+  <p class="sub reveal">Mueve al dinosaurio 🦖 con tu dedo y atrapa 22 corazones. Las ⭐ valen 3. ¡Cuidado con los 💔!</p>
+  <div id="atrapaWrap" class="reveal">
+    <canvas id="atrapa"></canvas>
+    <div id="atrapaUI"><span id="atrapaPts">❤️ 0 / 22</span><span id="atrapaVidas">💜💜💜</span></div>
+    <div id="atrapaOverlay"><div id="atrapaMsg" class="script">¿Lista, mi niña?</div><button class="btn" id="atrapaBtn">Jugar ▶</button></div>
+  </div>
+  <div id="atrapaPremio" class="script premio">Atrapaste mi corazón… aunque ya era tuyo desde hace rato 💜</div>
+</section>
+
+<!-- ============ ESTRELLAS ============ -->
+<section id="cieloSec">
+  <div class="etiqueta reveal">22 años, 22 estrellas</div>
+  <h2 class="titulo script reveal">Razones por las que te amo</h2>
+  <p class="sub reveal">Toca cada estrella ⭐</p>
+  <div id="cielo" class="reveal"></div>
+  <div id="textoRazon"></div>
+  <div id="cuentaRazones">0 / 22</div>
+</section>
+
+<!-- ============ VALES ============ -->
+<section id="valesSec">
+  <div class="etiqueta reveal">Regalos que no caben en una caja</div>
+  <h2 class="titulo script reveal">Rasca y descubre</h2>
+  <p class="sub reveal">Raspa cada tarjeta con tu dedo. Cada vale lo puedes canjear cuando tú quieras 😌</p>
+  <div id="vales" class="reveal"></div>
+</section>
+
+<!-- ============ CARTA ============ -->
+<section id="cartaSec">
+  <div class="etiqueta reveal">Para ti</div>
+  <h2 class="titulo script reveal">Una carta</h2>
+  <div class="carta reveal">
+    <div id="textoCarta"></div>
+    <div class="firma script" id="firma">Siempre tuyo 🦖❤️⭐</div>
+  </div>
+</section>
+
+<!-- ============ PREGUNTA ============ -->
+<section id="preguntaSec">
+  <div class="etiqueta reveal">Pregunta importante</div>
+  <h2 class="titulo script reveal">¿Quieres pasar todos tus cumpleaños conmigo?</h2>
+  <div id="preguntaZona" class="reveal">
+    <button class="btn" id="btnSi">Sí 💜</button>
+    <button class="btn sec" id="btnNo">No</button>
+  </div>
+  <div id="preguntaResp" class="script premio">¡Sabía que dirías que sí! 🦖❤️⭐<br>Prometo hacer de cada uno el mejor.</div>
+</section>
+
+<!-- ============ FINAL ============ -->
+<section id="final">
+  <div class="etiqueta reveal">Una última cosa…</div>
+  <button class="btn reveal" id="btnFinal">Toca aquí 💜</button>
+  <canvas id="teamoCanvas"></canvas>
+  <svg id="ramo" viewBox="0 0 700 260" preserveAspectRatio="xMidYMax meet"></svg>
+  <div class="almita script reveal">Feliz cumpleaños, mi love</div>
+  <p class="sub reveal">Almita con almita, hoy y siempre. 🦖❤️⭐</p>
+</section>
+<footer>Hecho con todo mi amor para Stefany · 20/11/2026</footer>
+
+<div id="dino"><span id="globo">¡Te amo, loviny! ❤️⭐</span><span class="paso">🦖</span></div>
+<div id="visor"><img alt=""></div>
+<button id="musicaBtn" title="Música">🎵</button>
+<audio id="musica" src="musica.mp3" loop preload="auto"></audio>
+
+<script>
+/* =========================================================
+   PERSONALIZA AQUÍ
+   ========================================================= */
+const FECHA_INICIO = new Date(2026, 7, 4, 0, 0, 0); // 04/08/2026 (los meses empiezan en 0)
+const MAX_FOTOS = 30; // pon tus fotos en /fotos como 1.jpg, 2.jpg, 3.jpg...
+
+const RAZONES = [
+  "Porque tu sonrisa arregla cualquier día malo.",
+  "Porque contigo hasta el silencio se siente bonito.",
+  "Porque eres mi lugar seguro.",
+  "Porque te ríes de mis chistes, incluso de los malos.",
+  "Porque almita con almita, siempre.",
+  "Porque me haces querer ser mejor cada día.",
+  "Porque tus abrazos tienen poderes curativos.",
+  "Porque eres la niña más bonita que he visto.",
+  "Porque contigo todo es más divertido.",
+  "Porque eres valiente, aunque a veces no lo creas.",
+  "Porque me entiendes sin que diga nada.",
+  "Porque tu voz es mi canción favorita.",
+  "Porque hasta nuestros dinosaurios 🦖 se aman.",
+  "Porque eres mi estrella ⭐ cuando todo está oscuro.",
+  "Porque cuidas a los que quieres con todo el corazón.",
+  "Porque me miras como nadie me ha mirado.",
+  "Porque cada día a tu lado es un regalo.",
+  "Porque tienes el corazón más noble del mundo.",
+  "Porque eres mi loviny, mi love, mi amochito y mi niña.",
+  "Porque el hilo rojo eligió bien.",
+  "Porque no pienso soltar tu mano.",
+  "Porque eres tú. Y eso es suficiente para amarte toda la vida."
+];
+
+const CARTA =
+`Mi loviny:
+
+Hoy cumples 22 años y yo solo puedo pensar en la suerte que tengo de estar a tu lado. Desde el 4 de agosto mi vida tiene otro color: morado, como te gusta 💜.
+
+Gracias por cada risa, cada abrazo, cada mensaje y cada momento en que me haces sentir que todo está bien. Eres mi niña, mi amochito, mi lugar favorito en el mundo.
+
+Que este nuevo año te traiga todo lo que sueñas, y que me dejes estar ahí para verlo. Yo voy a estar a tu lado celebrando cada logro y abrazándote en cada día difícil.
+
+Almita con almita. No sueltes mi mano, que yo no soltaré la tuya.
+
+Y nunca olvides lo que nunca te debes de olvidar: que te amo con todo mi corazón.
+
+¡Feliz cumpleaños, mi love!`;
+
+const FRASE_JUEGO = "No olvides lo que nunca te debes de olvidar";
+
+const VALES = [
+  ["🎟️", "Vale por una cita sorpresa planeada por mí"],
+  ["🤗", "Vale por un abrazo infinito, sin soltarte"],
+  ["🍿", "Vale por una noche de pelis con los snacks que tú elijas"],
+  ["💐", "Vale por flores sin motivo, el día que quieras"]
+];
+
+/* =========================================================
+   UTILIDADES Y EFECTOS GLOBALES
+   ========================================================= */
+const $ = s => document.querySelector(s);
+const rnd = (a,b) => a + Math.random()*(b-a);
+const COLORES = ['#c99bff','#9b4dca','#ff2a4f','#b3203f','#ffd36e','#ff8fb1','#ffffff'];
+const esMovil = matchMedia('(pointer:coarse)').matches;
+
+// estrellas fondo
+(() => { const c=$('#estrellasFondo'); for(let i=0;i<(esMovil?60:120);i++){const s=document.createElement('div');s.className='est';
+  s.style.left=rnd(0,100)+'%';s.style.top=rnd(0,100)+'%';s.style.animationDelay=rnd(0,3)+'s';const z=rnd(1,2.6);s.style.width=s.style.height=z+'px';c.appendChild(s);} })();
+
+// "te amo" flotando en muchos idiomas
+const IDIOMAS=['te amo','I love you','je t\'aime','ti amo','eu te amo','ich liebe dich','munakuyki','사랑해','愛してる','我爱你','σ\'αγαπώ','seni seviyorum','te iubesc','ya tebya lyublyu','te amo, Stefany'];
+function teAmoFlota(){ const e=document.createElement('div');e.className='teamo-flota';e.textContent=IDIOMAS[Math.floor(Math.random()*IDIOMAS.length)];
+  e.style.left=rnd(0,92)+'vw';e.style.fontSize=rnd(12,22)+'px';e.style.animationDuration=rnd(14,24)+'s';$('#teamoFondo').appendChild(e);setTimeout(()=>e.remove(),25000);}
+setInterval(teAmoFlota,1400); for(let i=0;i<5;i++) setTimeout(teAmoFlota,i*300);
+
+// pétalos
+function petalo(){ const p=document.createElement('div');p.className='petalo';p.style.left=rnd(0,100)+'vw';
+  p.style.background=['#9b4dca','#800020','#c99bff','#b3203f'][Math.floor(rnd(0,4))];p.style.setProperty('--dx',rnd(-120,120)+'px');
+  p.style.animationDuration=rnd(9,16)+'s';p.style.transform=`scale(${rnd(.6,1.2)})`;$('#petalos').appendChild(p);setTimeout(()=>p.remove(),17000);}
+setInterval(petalo,900);
+
+// aparecer al hacer scroll
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');}}),{threshold:.15});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+/* ---------- motor de partículas (confeti, fuegos, corazones) ---------- */
+const fx=$('#fx'), fctx=fx.getContext('2d'); let DPR=Math.min(devicePixelRatio||1,2), parts=[], fxActivo=false;
+function tamFx(){fx.width=innerWidth*DPR;fx.height=innerHeight*DPR;fx.style.width=innerWidth+'px';fx.style.height=innerHeight+'px';fctx.setTransform(DPR,0,0,DPR,0,0);}
+tamFx(); addEventListener('resize',tamFx);
+function corazon(ctx,x,y,s,col){ctx.save();ctx.translate(x,y);ctx.scale(s/16,s/16);ctx.beginPath();ctx.moveTo(0,4);
+  ctx.bezierCurveTo(0,0,-8,-6,-12,0);ctx.bezierCurveTo(-16,7,-6,12,0,17);ctx.bezierCurveTo(6,12,16,7,12,0);ctx.bezierCurveTo(8,-6,0,0,0,4);ctx.fillStyle=col;ctx.fill();ctx.restore();}
+function estrella(ctx,x,y,r,col){ctx.save();ctx.translate(x,y);ctx.beginPath();for(let i=0;i<10;i++){const a=i*Math.PI/5-Math.PI/2,rr=i%2?r*.45:r;ctx.lineTo(Math.cos(a)*rr,Math.sin(a)*rr);}ctx.closePath();ctx.fillStyle=col;ctx.fill();ctx.restore();}
+function loopFx(){ fctx.clearRect(0,0,innerWidth,innerHeight);
+  for(let i=parts.length-1;i>=0;i--){const p=parts[i];
+    if(p.t==='cohete'){p.x+=p.vx;p.y+=p.vy;p.vy+=0.12;fctx.fillStyle='#fff';fctx.beginPath();fctx.arc(p.x,p.y,2.2,0,7);fctx.fill();
+      if(Math.random()<.6) parts.push({t:'chispa',x:p.x,y:p.y,vx:rnd(-.4,.4),vy:rnd(0,1),v:30,c:'#ffd36e',s:1.5});
+      if(p.vy>=-0.5){explota(p.x,p.y);parts.splice(i,1);} continue;}
+    p.x+=p.vx;p.y+=p.vy;p.v--;
+    if(p.t==='confeti'){p.vy+=.05;p.vx*=.99;p.rot+=p.vr;fctx.save();fctx.translate(p.x,p.y);fctx.rotate(p.rot);fctx.fillStyle=p.c;fctx.globalAlpha=Math.min(1,p.v/40);fctx.fillRect(-p.s/2,-p.s/4,p.s,p.s/2);fctx.restore();}
+    else if(p.t==='chispa'){p.vy+=.04;p.vx*=.98;p.vy*=.98;fctx.globalAlpha=Math.max(0,p.v/p.v0||p.v/30);fctx.fillStyle=p.c;fctx.beginPath();fctx.arc(p.x,p.y,p.s,0,7);fctx.fill();fctx.globalAlpha=1;}
+    else if(p.t==='corazon'){p.vy-=.01;fctx.globalAlpha=Math.max(0,Math.min(1,p.v/40));corazon(fctx,p.x,p.y,p.s,p.c);fctx.globalAlpha=1;}
+    else if(p.t==='estrella'){p.vy+=.02;fctx.globalAlpha=Math.max(0,p.v/40);estrella(fctx,p.x,p.y,p.s,p.c);fctx.globalAlpha=1;}
+    if(p.v<=0||p.y>innerHeight+50) parts.splice(i,1);}
+  fctx.globalAlpha=1;
+  if(parts.length) requestAnimationFrame(loopFx); else {fxActivo=false;fctx.clearRect(0,0,innerWidth,innerHeight);} }
+function arrancaFx(){if(!fxActivo){fxActivo=true;requestAnimationFrame(loopFx);}}
+function confeti(n=160,x=innerWidth/2,y=innerHeight*.35){for(let i=0;i<n;i++){const a=rnd(0,Math.PI*2),v=rnd(3,11);
+  parts.push({t:'confeti',x,y,vx:Math.cos(a)*v,vy:Math.sin(a)*v-4,v:rnd(90,160),c:COLORES[i%COLORES.length],s:rnd(7,13),rot:rnd(0,6),vr:rnd(-.3,.3)});}arrancaFx();}
+function explota(x,y){const c=COLORES[Math.floor(rnd(0,COLORES.length))],n=esMovil?50:80,cor=Math.random()<.35;
+  for(let i=0;i<n;i++){const a=(i/n)*Math.PI*2;let vx,vy;
+    if(cor){const t=a;vx=16*Math.pow(Math.sin(t),3)/4;vy=-(13*Math.cos(t)-5*Math.cos(2*t)-2*Math.cos(3*t)-Math.cos(4*t))/4;}
+    else{const v=rnd(1.5,5);vx=Math.cos(a)*v;vy=Math.sin(a)*v;}
+    parts.push({t:'chispa',x,y,vx,vy,v:rnd(55,80),v0:80,c:Math.random()<.2?'#fff':c,s:rnd(1.5,2.8)});}arrancaFx();}
+function fuegos(n=6){for(let i=0;i<n;i++)setTimeout(()=>{parts.push({t:'cohete',x:rnd(innerWidth*.15,innerWidth*.85),y:innerHeight,vx:rnd(-1,1),vy:-rnd(11,15)});arrancaFx();},i*rnd(250,450));}
+function lluviaCorazones(n=40){for(let i=0;i<n;i++)setTimeout(()=>{parts.push({t:'corazon',x:rnd(0,innerWidth),y:innerHeight+20,vx:rnd(-.5,.5),vy:-rnd(1.5,3.5),v:rnd(160,260),c:COLORES[Math.floor(rnd(0,5))],s:rnd(10,24)});arrancaFx();},i*60);}
+
+// rastro de corazones/estrellas al tocar
+let ultimo=0;
+addEventListener('pointermove',e=>{const n=performance.now();if(n-ultimo<70||document.body.classList.contains('locked'))return;ultimo=n;
+  parts.push(Math.random()<.5?{t:'corazon',x:e.clientX,y:e.clientY,vx:rnd(-.6,.6),vy:rnd(-1.2,-.3),v:40,c:COLORES[Math.floor(rnd(0,4))],s:rnd(7,11)}
+                            :{t:'estrella',x:e.clientX,y:e.clientY,vx:rnd(-.6,.6),vy:rnd(-1,0),v:40,c:'#ffd36e',s:rnd(3,5)});arrancaFx();},{passive:true});
+
+/* ---------- audio: "Feliz cumpleaños" sintetizado ---------- */
+let actx=null; function audio(){if(!actx){try{actx=new (window.AudioContext||window.webkitAudioContext)();}catch(e){}}if(actx&&actx.state==='suspended')actx.resume();return actx;}
+function nota(f,t,d,vol=.18){const a=audio();if(!a)return;const o=a.createOscillator(),o2=a.createOscillator(),g=a.createGain();
+  o.type='triangle';o2.type='sine';o.frequency.value=f;o2.frequency.value=f*2;const g2=a.createGain();g2.gain.value=.25;
+  o.connect(g);o2.connect(g2);g2.connect(g);g.connect(a.destination);const s=a.currentTime+t;
+  g.gain.setValueAtTime(0,s);g.gain.linearRampToValueAtTime(vol,s+.03);g.gain.exponentialRampToValueAtTime(.001,s+d*1.4);
+  o.start(s);o2.start(s);o.stop(s+d*1.5);o2.stop(s+d*1.5);}
+function cancionCumple(){const N={G4:392,A4:440,B4:493.88,C5:523.25,D5:587.33,E5:659.25,F5:698.46,G5:783.99};
+  const m=[['G4',.75],['G4',.25],['A4',1],['G4',1],['C5',1],['B4',2],['G4',.75],['G4',.25],['A4',1],['G4',1],['D5',1],['C5',2],
+           ['G4',.75],['G4',.25],['G5',1],['E5',1],['C5',1],['B4',1],['A4',2],['F5',.75],['F5',.25],['E5',1],['C5',1],['D5',1],['C5',3]];
+  let t=.1;const b=.42;m.forEach(([n,d])=>{nota(N[n],t,d*b);nota(N[n]/2,t,d*b,.06);t+=d*b;});}
+function campanita(){[1046.5,1318.5,1568].forEach((f,i)=>nota(f,i*.08,.5,.1));}
+
+/* ---------- música opcional (musica.mp3) ---------- */
+const musica=$('#musica'),mBtn=$('#musicaBtn');let hayMusica=false;
+musica.addEventListener('canplaythrough',()=>{hayMusica=true;mBtn.style.display='block';},{once:true});
+mBtn.onclick=()=>{if(musica.paused){musica.play();mBtn.textContent='🎵';}else{musica.pause();mBtn.textContent='🔇';}};
+
+/* =========================================================
+   CANDADO
+   ========================================================= */
+function abrir(){const v=$('#clave').value.replace(/\D/g,'');
+  if(v.startsWith('0408')||v==='48'||v.startsWith('482026')){audio();campanita();
+    $('#candado').classList.add('abierto');document.body.classList.remove('locked');
+    setTimeout(()=>{fuegos(7);confeti(120);},400);setTimeout(lluviaCorazones,1500);
+    if(hayMusica){musica.volume=.6;musica.play().catch(()=>{});}
+  }else{const c=$('#clave');c.classList.remove('mal');void c.offsetWidth;c.classList.add('mal');}}
+$('#abrir').onclick=abrir;$('#clave').addEventListener('keydown',e=>{if(e.key==='Enter')abrir();});
+
+/* =========================================================
+   PASTEL
+   ========================================================= */
+let velasApagadas=0,micStream=null;
+function apagarVela(v){if(v.classList.contains('apagada'))return;v.classList.add('apagada');velasApagadas++;
+  if(velasApagadas===2){finCumple();}}
+document.querySelectorAll('.vela').forEach(v=>v.onclick=()=>apagarVela(v));
+$('#btnSoplar').onclick=()=>{document.querySelectorAll('.vela').forEach((v,i)=>setTimeout(()=>apagarVela(v),i*250));};
+function finCumple(){if(micStream){micStream.getTracks().forEach(t=>t.stop());micStream=null;}$('#medidor').style.display='none';
+  setTimeout(()=>{$('#deseo').style.opacity=1;confeti(220);fuegos(10);if(!hayMusica||musica.paused)cancionCumple();setTimeout(lluviaCorazones,1200);},600);}
+$('#btnMic').onclick=async()=>{
+  try{micStream=await navigator.mediaDevices.getUserMedia({audio:true});}catch(e){$('#btnMic').textContent='🎤 Sin micrófono, usa el toque';return;}
+  const a=audio(),src=a.createMediaStreamSource(micStream),an=a.createAnalyser();an.fftSize=512;src.connect(an);
+  const data=new Uint8Array(an.fftSize);let fuerza=0;$('#medidor').style.display='block';$('#btnMic').textContent='🎤 ¡Sopla fuerte!';
+  (function escucha(){if(!micStream)return;an.getByteTimeDomainData(data);let s=0;for(const x of data){const d=(x-128)/128;s+=d*d;}
+    const rms=Math.sqrt(s/data.length);$('#medidor div').style.width=Math.min(100,rms*400)+'%';
+    if(rms>.13)fuerza++;else fuerza=Math.max(0,fuerza-1);
+    const vs=document.querySelectorAll('.vela:not(.apagada)');if(fuerza>8&&vs.length){apagarVela(vs[0]);fuerza=0;}
+    requestAnimationFrame(escucha);})();
+};
+
+/* =========================================================
+   HILO ROJO (simulación de cuerda que nunca se rompe)
+   ========================================================= */
+(() => {
+  const cv=$('#hilo'),ctx=cv.getContext('2d');let W,H,pts=[],N=90,seg,arrastre=-1,dibujado=0,empezo=false,tiempo=0,mouse={x:0,y:0};
+  function init(){const r=cv.getBoundingClientRect();W=r.width;H=r.height;cv.width=W*DPR;cv.height=H*DPR;ctx.setTransform(DPR,0,0,DPR,0,0);
+    const A={x:W*.1,y:H*.5},B={x:W*.9,y:H*.5},R=Math.min(W,H)*.17;pts=[];
+    for(let i=0;i<N;i++){const s=i/(N-1);let x=A.x+(B.x-A.x)*s,y=A.y;
+      // dos bucles como en un hilo enredado
+      const env=Math.sin(Math.PI*s);x+=-Math.sin(s*Math.PI*4)*R*env*1.1;y+=-Math.cos(s*Math.PI*4)*R*env+R*env*.9-R*.5*env;
+      pts.push({x,y,ox:x,oy:y,fijo:i===0||i===N-1});}
+    seg=0;for(let i=1;i<N;i++)seg+=Math.hypot(pts[i].x-pts[i-1].x,pts[i].y-pts[i-1].y);seg/=(N-1);}
+  function paso(){tiempo+=.016;
+    for(let i=0;i<N;i++){const p=pts[i];if(p.fijo||i===arrastre)continue;const vx=(p.x-p.ox)*.97,vy=(p.y-p.oy)*.97;p.ox=p.x;p.oy=p.y;
+      p.x+=vx+Math.sin(tiempo*1.3+i*.15)*.04;p.y+=vy+Math.cos(tiempo*1.1+i*.2)*.05+.015;}
+    if(arrastre>=0){pts[arrastre].x=mouse.x;pts[arrastre].y=mouse.y;}
+    for(let k=0;k<18;k++)for(let i=1;i<N;i++){const a=pts[i-1],b=pts[i];const dx=b.x-a.x,dy=b.y-a.y,d=Math.hypot(dx,dy)||1,dif=(d-seg)/d*.5;
+      const ox=dx*dif,oy=dy*dif;if(!a.fijo&&i-1!==arrastre){a.x+=ox;a.y+=oy;}if(!b.fijo&&i!==arrastre){b.x-=ox;b.y-=oy;}}
+    for(const p of pts){p.x=Math.max(4,Math.min(W-4,p.x));p.y=Math.max(4,Math.min(H-4,p.y));}}
+  function trazo(n){ctx.beginPath();ctx.moveTo(pts[0].x,pts[0].y);for(let i=1;i<n-1;i++){const mx=(pts[i].x+pts[i+1].x)/2,my=(pts[i].y+pts[i+1].y)/2;ctx.quadraticCurveTo(pts[i].x,pts[i].y,mx,my);}
+    if(n>1)ctx.lineTo(pts[n-1].x,pts[n-1].y);}
+  function dibuja(){ctx.clearRect(0,0,W,H);const n=Math.max(2,Math.floor(dibujado));
+    ctx.lineCap='round';ctx.lineJoin='round';
+    ctx.shadowColor='#ff1744';ctx.shadowBlur=28;ctx.strokeStyle='rgba(255,40,80,.55)';ctx.lineWidth=7;trazo(n);ctx.stroke();
+    ctx.shadowBlur=12;ctx.strokeStyle='#ff4d6d';ctx.lineWidth=3;trazo(n);ctx.stroke();
+    ctx.shadowBlur=0;ctx.strokeStyle='rgba(255,220,230,.8)';ctx.lineWidth=1;trazo(n);ctx.stroke();
+    // chispa que viaja por el hilo
+    if(dibujado>=N){const k=Math.floor((tiempo*25)%N),p=pts[k];ctx.shadowColor='#fff';ctx.shadowBlur=20;ctx.fillStyle='#fff';ctx.beginPath();ctx.arc(p.x,p.y,3.5,0,7);ctx.fill();ctx.shadowBlur=0;}
+    // extremos
+    [[pts[0],'Stefany'],[pts[N-1],'Yo']].forEach(([p,t],j)=>{ctx.shadowColor='#ff1744';ctx.shadowBlur=25;corazon(ctx,p.x,p.y-8,22,'#ff2a4f');ctx.shadowBlur=0;
+      ctx.fillStyle='#ffe0ea';ctx.font='600 18px Quicksand';ctx.textAlign='center';ctx.fillText(t,p.x,p.y+40);});
+    const em=pts[Math.floor(N/2)];if(dibujado>=N){ctx.font='20px serif';ctx.fillText('🦖',pts[Math.floor(N*.3)].x,pts[Math.floor(N*.3)].y-14);ctx.fillText('⭐',pts[Math.floor(N*.7)].x,pts[Math.floor(N*.7)].y-14);}
+  }
+  function loop(){if(empezo){if(dibujado<N)dibujado+=.9;paso();dibuja();}requestAnimationFrame(loop);}
+  new IntersectionObserver(e=>{if(e[0].isIntersecting&&!empezo){empezo=true;}},{threshold:.3}).observe(cv);
+  function pos(e){const r=cv.getBoundingClientRect();return{x:e.clientX-r.left,y:e.clientY-r.top};}
+  cv.addEventListener('pointerdown',e=>{const m=pos(e);let mejor=-1,md=60;pts.forEach((p,i)=>{if(p.fijo)return;const d=Math.hypot(p.x-m.x,p.y-m.y);if(d<md){md=d;mejor=i;}});
+    if(mejor>=0){arrastre=mejor;mouse=m;cv.setPointerCapture(e.pointerId);cv.style.cursor='grabbing';}});
+  cv.addEventListener('pointermove',e=>{if(arrastre>=0)mouse=pos(e);});
+  const suelta=()=>{if(arrastre>=0){const p=pts[arrastre];const r=cv.getBoundingClientRect();
+      for(let i=0;i<6;i++)parts.push({t:'corazon',x:r.left+p.x,y:r.top+p.y,vx:rnd(-1,1),vy:rnd(-2,-.5),v:50,c:'#ff2a4f',s:rnd(8,13)});arrancaFx();}
+    arrastre=-1;cv.style.cursor='grab';};
+  cv.addEventListener('pointerup',suelta);cv.addEventListener('pointercancel',suelta);
+  init();let rt,anchoPrev=innerWidth;addEventListener('resize',()=>{if(innerWidth===anchoPrev)return;anchoPrev=innerWidth;clearTimeout(rt);rt=setTimeout(init,200);});loop();
+})();
+
+/* =========================================================
+   JUEGO DE ORDENAR PALABRAS
+   ========================================================= */
+(() => {
+  const palabras=FRASE_JUEGO.split(' ');let indice=0;
+  function mezclar(a){a=a.map((p,i)=>({p,i}));do{for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}}while(a.every((x,k)=>x.i===k));return a;}
+  function iniciar(){indice=0;$('#respuesta').innerHTML='';$('#fichas').innerHTML='';$('#premioJuego').style.opacity=0;
+    mezclar(palabras).forEach(({p,i})=>{const b=document.createElement('button');b.className='ficha';b.textContent=p;b.dataset.i=i;
+      b.onclick=()=>elegir(b);$('#fichas').appendChild(b);});}
+  function elegir(b){const i=+b.dataset.i;
+    // acepta palabras repetidas en el mismo lugar (por si hubiera iguales)
+    if(palabras[i]===palabras[indice]){nota(523.25+indice*40,0,.18,.12);b.classList.remove('error');b.classList.add('puesta');$('#respuesta').appendChild(b);b.onclick=null;indice++;
+      const r=b.getBoundingClientRect();for(let k=0;k<5;k++)parts.push({t:'estrella',x:r.left+r.width/2,y:r.top,vx:rnd(-1.5,1.5),vy:rnd(-2.5,-1),v:35,c:'#ffd36e',s:rnd(3,6)});arrancaFx();
+      if(indice===palabras.length)gana();}
+    else{nota(180,0,.15,.08);b.classList.remove('error');void b.offsetWidth;b.classList.add('error');}}
+  function gana(){document.querySelectorAll('#respuesta .ficha').forEach((f,k)=>setTimeout(()=>{f.classList.add('brilla');},k*120));
+    setTimeout(()=>{campanita();confeti(200);lluviaCorazones(35);$('#premioJuego').style.opacity=1;},palabras.length*120+200);}
+  $('#btnPista').onclick=()=>{const sig=[...document.querySelectorAll('#fichas .ficha')].find(f=>palabras[+f.dataset.i]===palabras[indice]);
+    if(sig){sig.animate([{transform:'scale(1)'},{transform:'scale(1.25)',boxShadow:'0 0 25px #ffd36e'},{transform:'scale(1)'}],{duration:900,iterations:2});}};
+  $('#btnReinicio').onclick=iniciar;iniciar();
+})();
+
+/* =========================================================
+   TOMA MI MANO (mantener presionado)
+   ========================================================= */
+(() => {
+  const an=$('#anillo'),prog=$('#progreso'),izq=$('#manoIzq'),der=$('#manoDer');let v=0,pres=false,listo=false;
+  const sep=()=>Math.min(innerWidth*.2,170);
+  function act(){const d=sep()*(1-v);izq.style.transform=`translateX(${-d}px)`;der.style.transform=`translateX(${d}px)`;prog.style.strokeDashoffset=377*(1-v);}
+  function loop(){if(!listo){v+=pres?.012:-.02;v=Math.max(0,Math.min(1,v));act();
+      if(pres&&Math.random()<.3){const r=an.getBoundingClientRect();parts.push({t:'corazon',x:r.left+r.width/2+rnd(-40,40),y:r.top+rnd(0,40),vx:rnd(-.5,.5),vy:rnd(-2,-1),v:40,c:'#ff8fb1',s:rnd(7,11)});arrancaFx();}
+      if(v>=1){listo=true;$('#centroAnillo').innerHTML='💞';izq.style.transform=der.style.transform='translateX(0)';
+        $('#fraseManos').style.opacity=1;confeti(150);fuegos(4);campanita();if(navigator.vibrate)navigator.vibrate([80,60,80]);}}
+    requestAnimationFrame(loop);}
+  const on=e=>{e.preventDefault();pres=true;audio();},off=()=>pres=false;
+  an.addEventListener('pointerdown',on);addEventListener('pointerup',off);addEventListener('pointercancel',off);an.addEventListener('contextmenu',e=>e.preventDefault());
+  act();loop();
+})();
+
+/* =========================================================
+   CONTADOR
+   ========================================================= */
+function contador(){const ms=Date.now()-FECHA_INICIO.getTime(),s=Math.max(0,Math.floor(ms/1000));
+  $('#cDias').textContent=Math.floor(s/86400);$('#cHoras').textContent=Math.floor(s%86400/3600);$('#cMin').textContent=Math.floor(s%3600/60);$('#cSeg').textContent=s%60;
+  $('#latidos').textContent=`≈ ${Math.floor(s/60*75).toLocaleString('es-PE')} latidos de mi corazón que han sido tuyos 💓`;}
+contador();setInterval(contador,1000);
+
+/* =========================================================
+   GALERÍA AUTOMÁTICA (fotos/1.jpg, 2.jpg ... )
+   ========================================================= */
+(() => {
+  const exts=['jpg','jpeg','png','webp','JPG','PNG'],cargadas=[];let pendientes=MAX_FOTOS;
+  function probar(n,k){if(k>=exts.length){fin();return;}const img=new Image();img.onload=()=>{cargadas[n]=img.src;fin();};img.onerror=()=>probar(n,k+1);img.src=`fotos/${n}.${exts[k]}`;}
+  function fin(){if(--pendientes>0)return;const lista=cargadas.filter(Boolean);if(!lista.length)return;document.dispatchEvent(new CustomEvent('fotosListas',{detail:lista}));$('#galeriaSec').style.display='flex';
+    lista.forEach((src,i)=>{const d=document.createElement('div');d.className='polaroid reveal';d.style.transform=`rotate(${rnd(-7,7)}deg)`;d.style.transitionDelay=(i%4)*.12+'s';
+      d.innerHTML=`<img src="${src}" alt="nosotros" loading="lazy">`;d.onclick=()=>{$('#visor img').src=src;$('#visor').style.display='flex';};$('#galeria').appendChild(d);io.observe(d);});}
+  for(let n=1;n<=MAX_FOTOS;n++)probar(n,0);
+  $('#visor').onclick=()=>$('#visor').style.display='none';
+})();
+
+/* =========================================================
+   22 ESTRELLAS
+   ========================================================= */
+(() => {
+  const cielo=$('#cielo');let vistas=new Set();
+  // posiciones en forma de corazón
+  RAZONES.forEach((r,i)=>{const t=(i/RAZONES.length)*Math.PI*2;const x=16*Math.pow(Math.sin(t),3),y=-(13*Math.cos(t)-5*Math.cos(2*t)-2*Math.cos(3*t)-Math.cos(4*t));
+    const s=document.createElement('div');s.className='razon';s.textContent='⭐';s.style.left=(50+x*2.6)+'%';s.style.top=(46+y*2.9)+'%';s.style.animationDelay=rnd(0,2.5)+'s';
+    s.onclick=()=>{vistas.add(i);s.classList.add('vista');const tx=$('#textoRazon');tx.style.opacity=0;setTimeout(()=>{tx.textContent=`${i+1}. ${r}`;tx.style.opacity=1;},200);
+      nota(880+i*25,0,.3,.1);$('#cuentaRazones').textContent=`${vistas.size} / ${RAZONES.length}`;
+      const b=s.getBoundingClientRect();for(let k=0;k<8;k++)parts.push({t:'estrella',x:b.left+b.width/2,y:b.top+b.height/2,vx:rnd(-2,2),vy:rnd(-2,2),v:30,c:'#ffd36e',s:rnd(2,5)});arrancaFx();
+      if(vistas.size===RAZONES.length){setTimeout(()=>{$('#textoRazon').textContent='Y podría seguir toda la vida… 💜';fuegos(6);},2200);}};
+    cielo.appendChild(s);});
+  const m=document.createElement('div');m.style.cssText='position:absolute;left:50%;top:46%;transform:translate(-50%,-50%);font-size:40px;';m.textContent='🦖';cielo.appendChild(m);
+})();
+
+/* =========================================================
+   CARTA (máquina de escribir)
+   ========================================================= */
+(() => {
+  const el=$('#textoCarta');let empez=false;
+  const reserva=()=>{if(empez)return;el.style.minHeight='';el.textContent=CARTA;el.style.minHeight=el.offsetHeight+'px';el.textContent='';};reserva();addEventListener('resize',reserva);
+  new IntersectionObserver(e=>{if(e[0].isIntersecting&&!empez){empez=true;let i=0;
+    (function escribe(){if(i<=CARTA.length){el.innerHTML=CARTA.slice(0,i).replace(/&/g,'&amp;').replace(/</g,'&lt;')+'<span class="cursor"></span>';
+      const c=CARTA[i-1];i++;setTimeout(escribe,c==='\n'?280:c==='.'||c===','?140:32);}
+      else{el.innerHTML=CARTA.replace(/</g,'&lt;');$('#firma').style.opacity=1;}})();}},{threshold:.35}).observe(el);
+})();
+
+/* =========================================================
+   FINAL: "TE AMO" con corazones + ramo de flores
+   ========================================================= */
+(() => {
+  const cv=$('#teamoCanvas'),ctx=cv.getContext('2d');let W,H,ps=[],activo=false,m={x:-999,y:-999};
+  function tam(){const r=cv.getBoundingClientRect();W=r.width;H=r.height;cv.width=W*DPR;cv.height=H*DPR;ctx.setTransform(DPR,0,0,DPR,0,0);}
+  function objetivos(){const o=document.createElement('canvas');o.width=W;o.height=H;const c=o.getContext('2d');c.fillStyle='#fff';c.textAlign='center';c.textBaseline='middle';
+    let fs=Math.min(W/4.2,H*.55);c.font=`700 ${fs}px Quicksand`;c.fillText('TE AMO',W/2,H*.45);c.font=`400 ${fs*.32}px 'Great Vibes'`;c.fillText('Stefany',W/2,H*.85);
+    const d=c.getImageData(0,0,W,H).data,paso=W<500?5:7,res=[];for(let y=0;y<H;y+=paso)for(let x=0;x<W;x+=paso)if(d[(y*W+x)*4+3]>128)res.push({x,y});return res;}
+  function inicia(){tam();const ob=objetivos();ps=ob.map(t=>({x:rnd(0,W),y:H+rnd(0,300),tx:t.x,ty:t.y,vx:0,vy:0,c:COLORES[Math.floor(rnd(0,5))],s:rnd(4,7)}));if(!activo){activo=true;loop();}}
+  function loop(){ctx.clearRect(0,0,W,H);for(const p of ps){let ax=(p.tx-p.x)*.04,ay=(p.ty-p.y)*.04;const dx=p.x-m.x,dy=p.y-m.y,d=Math.hypot(dx,dy);
+      if(d<70){ax+=dx/d*3;ay+=dy/d*3;}p.vx=(p.vx+ax)*.82;p.vy=(p.vy+ay)*.82;p.x+=p.vx;p.y+=p.vy;corazon(ctx,p.x,p.y,p.s+1.5,p.c);}
+    if(activo)requestAnimationFrame(loop);}
+  cv.addEventListener('pointermove',e=>{const r=cv.getBoundingClientRect();m={x:e.clientX-r.left,y:e.clientY-r.top};});
+  cv.addEventListener('pointerleave',()=>m={x:-999,y:-999});
+  // ramo de flores SVG
+  function ramo(){const svg=$('#ramo'),NS='http://www.w3.org/2000/svg';let html='';const cols=[['#9b4dca','#c99bff'],['#800020','#b3203f'],['#7b2fa8','#e0b3ff'],['#a3295a','#ff8fb1']];
+    for(let i=0;i<9;i++){const x=110+i*60+rnd(-15,15),h=rnd(110,200),y=260-h,[c1,c2]=cols[i%4],d=(i*.15).toFixed(2);
+      html+=`<path class="tallo" style="transition-delay:${d}s" d="M${x} 260 Q ${x+rnd(-25,25)} ${260-h/2} ${x} ${y}" stroke="#3f7a3a" stroke-width="4" fill="none"/>`;
+      html+=`<ellipse class="tallo" style="transition-delay:${d}s" cx="${x+12}" cy="${260-h*.4}" rx="12" ry="5" fill="#4f9a48" transform="rotate(-30 ${x+12} ${260-h*.4})"/>`;
+      let petals='';const np=i%2?6:8;for(let k=0;k<np;k++){const a=k*360/np;petals+=`<ellipse cx="${x}" cy="${y-14}" rx="9" ry="18" fill="${k%2?c1:c2}" transform="rotate(${a} ${x} ${y})" opacity=".95"/>`;}
+      html+=`<g class="flor" style="transition-delay:${(+d+1.1).toFixed(2)}s">${petals}<circle cx="${x}" cy="${y}" r="8" fill="#ffd36e"/></g>`;}
+    svg.innerHTML=html;requestAnimationFrame(()=>requestAnimationFrame(()=>svg.classList.add('crece')));}
+  $('#btnFinal').onclick=()=>{$('#btnFinal').style.display='none';audio();inicia();ramo();fuegos(12);setTimeout(()=>confeti(250),800);setTimeout(()=>lluviaCorazones(60),1500);cancionCumple();};
+  let anchoF=innerWidth;addEventListener('resize',()=>{if(activo&&innerWidth!==anchoF){anchoF=innerWidth;inicia();}});
+})();
+
+/* =========================================================
+   MEMORAMA (usa tus fotos si hay; si no, emojis)
+   ========================================================= */
+(() => {
+  const EMO=['🦖','❤️','⭐','💜','🌸','🌷','🎂','💐'];
+  let fotos=[],abiertas=[],bloq=false,pares=0,movs=0,empezado=false;
+  function crear(){abiertas=[];bloq=false;pares=0;movs=0;$('#memoMov').textContent='0 movimientos';$('#memoPremio').style.opacity=0;
+    const n=Math.min(8,fotos.length),items=[...fotos.slice(0,n).map(src=>({src})),...EMO.slice(0,8-n).map(e=>({e}))],mazo=[];
+    items.forEach((it,i)=>mazo.push({...it,id:i},{...it,id:i}));
+    for(let i=mazo.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[mazo[i],mazo[j]]=[mazo[j],mazo[i]];}
+    const cont=$('#memo');cont.innerHTML='';
+    mazo.forEach(m=>{const c=document.createElement('div');c.className='mcard';c.dataset.id=m.id;
+      c.innerHTML=`<div class="in"><div class="cara dorso">💜</div><div class="cara frente">${m.src?`<img src="${m.src}" alt="">`:m.e}</div></div>`;
+      c.onclick=()=>voltear(c);cont.appendChild(c);});}
+  function voltear(c){if(bloq||c.classList.contains('vol'))return;empezado=true;audio();c.classList.add('vol');nota(620,0,.1,.07);abiertas.push(c);
+    if(abiertas.length<2)return;movs++;$('#memoMov').textContent=movs+(movs===1?' movimiento':' movimientos');
+    const [a,b]=abiertas;abiertas=[];
+    if(a.dataset.id===b.dataset.id){pares++;const p=pares;
+      setTimeout(()=>{a.classList.add('ok');b.classList.add('ok');nota(880,0,.15,.1);nota(1175,.1,.2,.1);
+        [a,b].forEach(x=>{const r=x.getBoundingClientRect();for(let k=0;k<6;k++)parts.push({t:'corazon',x:r.left+r.width/2,y:r.top+r.height/2,vx:rnd(-1.5,1.5),vy:rnd(-2.5,-.5),v:40,c:COLORES[k%5],s:rnd(7,11)});});arrancaFx();
+        if(p===8)setTimeout(()=>{campanita();confeti(200);fuegos(4);$('#memoPremio').style.opacity=1;},500);},350);}
+    else{bloq=true;setTimeout(()=>{a.classList.remove('vol');b.classList.remove('vol');bloq=false;},900);}}
+  document.addEventListener('fotosListas',e=>{fotos=e.detail;if(!empezado)crear();});
+  $('#memoReset').onclick=()=>{empezado=false;crear();};
+  crear();
+})();
+
+/* =========================================================
+   ATRAPA MI CORAZÓN (con revivir: los puntos se guardan)
+   ========================================================= */
+(() => {
+  const cv=$('#atrapa'),ctx=cv.getContext('2d'),META=22,VIDAS=3;
+  let W=0,H=0,px=0,dir=1,items=[],pts=0,vidas=VIDAS,jugando=false,ult=0,spawnT=0,flash=0,inv=0,vis=false,revive=false,bloqueoBtn=0;
+  function tam(){const w=cv.offsetWidth,h=cv.offsetHeight;if(!w)return;W=w;H=h;cv.width=W*DPR;cv.height=H*DPR;ctx.setTransform(DPR,0,0,DPR,0,0);if(!px||px>W)px=W/2;if(!jugando){ctx.clearRect(0,0,W,H);dino();}}
+  function dino(){ctx.save();ctx.globalAlpha=inv>0&&Math.floor(inv/5)%2?.3:1;ctx.translate(px,H-34);ctx.scale(dir,1);ctx.font='46px serif';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText('🦖',0,0);ctx.restore();}
+  function ui(){$('#atrapaPts').textContent=`❤️ ${Math.min(pts,META)} / ${META}`;$('#atrapaVidas').textContent='💜'.repeat(Math.max(0,vidas))+'🤍'.repeat(VIDAS-Math.max(0,vidas));}
+  function empezar(){if(jugando||performance.now()<bloqueoBtn)return;audio();tam();
+    if(!revive)pts=0;revive=false;vidas=VIDAS;items=[];spawnT=25;flash=0;inv=60;jugando=true;ui();
+    $('#atrapaOverlay').style.display='none';cv.style.touchAction='none';$('#dino').style.visibility='hidden';ult=performance.now();requestAnimationFrame(loop);}
+  function terminar(msg,btn,seguir){jugando=false;revive=seguir;bloqueoBtn=performance.now()+700;$('#dino').style.visibility='';cv.style.touchAction='pan-y';
+    $('#atrapaMsg').innerHTML=msg;$('#atrapaBtn').textContent=btn;$('#atrapaOverlay').style.display='flex';}
+  function spawn(){const r=Math.random(),t=r<.15?'mal':r<.25?'est':'bien';
+    items.push({x:rnd(22,W-22),y:-24,v:rnd(2,3)+Math.min(pts,META)*.06,t,e:t==='mal'?'💔':t==='est'?'⭐':(Math.random()<.5?'❤️':'💜')});}
+  function loop(now){if(!jugando)return;requestAnimationFrame(loop);const dt=Math.min(2.5,(now-ult)/16.67);ult=now;if(!vis)return;
+    spawnT-=dt;if(spawnT<=0){spawn();spawnT=Math.max(18,40-pts*.8);}
+    if(inv>0)inv-=dt;
+    ctx.clearRect(0,0,W,H);const py=H-34,rc=cv.getBoundingClientRect();
+    ctx.font='30px serif';ctx.textAlign='center';ctx.textBaseline='middle';
+    for(let i=items.length-1;i>=0;i--){const it=items[i];it.y+=it.v*dt;ctx.fillText(it.e,it.x,it.y);
+      const choca=it.y>py-30&&it.y<py+16&&Math.abs(it.x-px)<42;
+      if(choca&&!(it.t==='mal'&&inv>0)){items.splice(i,1);
+        if(it.t==='mal'){vidas--;flash=14;inv=75;nota(150,0,.3,.12);if(navigator.vibrate)navigator.vibrate(70);}
+        else{pts+=it.t==='est'?3:1;nota(600+Math.min(pts,META)*22,0,.12,.09);
+          for(let k=0;k<6;k++)parts.push({t:it.t==='est'?'estrella':'corazon',x:rc.left+it.x,y:rc.top+py-24,vx:rnd(-1.6,1.6),vy:rnd(-3,-1),v:35,c:it.t==='est'?'#ffd36e':COLORES[k%4],s:rnd(5,10)});arrancaFx();}
+        ui();
+        if(pts>=META){terminar('¡Ganaste! 🦖💜','Jugar otra vez ↺',false);$('#atrapaPremio').style.opacity=1;confeti(200);fuegos(5);campanita();return;}
+        if(vidas<=0){terminar('¡Auch! 💔<br><span style="font-size:.55em">Pero nuestro amor siempre revive… tus corazones se guardan</span>','Revivir 💜',true);return;}
+        continue;}
+      if(it.y>H+30)items.splice(i,1);}
+    if(flash>0){ctx.fillStyle=`rgba(255,30,70,${flash/45})`;ctx.fillRect(0,0,W,H);flash-=dt;}
+    dino();}
+  function mover(e){if(!W)return;const r=cv.getBoundingClientRect(),nx=Math.max(22,Math.min(W-22,e.clientX-r.left));if(Math.abs(nx-px)>1)dir=nx>px?-1:1;px=nx;}
+  cv.addEventListener('pointermove',mover);cv.addEventListener('pointerdown',mover);
+  addEventListener('keydown',e=>{if(!jugando)return;if(e.key==='ArrowLeft'){px=Math.max(22,px-30);dir=1;}if(e.key==='ArrowRight'){px=Math.min(W-22,px+30);dir=-1;}});
+  // solo corre cuando se ve al menos el 40% del juego (si sale de pantalla, se pausa)
+  new IntersectionObserver(e=>{vis=e[0].intersectionRatio>=.39;},{threshold:[0,.4]}).observe(cv);
+  $('#atrapaBtn').addEventListener('click',empezar);
+  tam();let wPrev=innerWidth;addEventListener('resize',()=>{if(innerWidth!==wPrev){wPrev=innerWidth;tam();}});
+})();
+
+/* =========================================================
+   VALES PARA RASPAR
+   ========================================================= */
+(() => {
+  const cont=$('#vales');
+  VALES.forEach(([ico,txt])=>{const v=document.createElement('div');v.className='vale';v.innerHTML=`<div class="ico">${ico}</div><div class="txt">${txt}</div><canvas></canvas>`;cont.appendChild(v);
+    const cv=v.querySelector('canvas'),ctx=cv.getContext('2d');let raspando=false,movs=0,listo=false,tocado=false,ant=null;
+    function pinta(){const w=v.offsetWidth,h=v.offsetHeight;if(!w)return;cv.width=w*DPR;cv.height=h*DPR;ctx.setTransform(DPR,0,0,DPR,0,0);
+      ctx.globalCompositeOperation='source-over';const g=ctx.createLinearGradient(0,0,w,h);g.addColorStop(0,'#7b2fa8');g.addColorStop(1,'#8f1b42');ctx.fillStyle=g;ctx.fillRect(0,0,w,h);
+      ctx.globalAlpha=.18;for(let i=0;i<14;i++)corazon(ctx,rnd(0,w),rnd(0,h),rnd(10,22),'#fff');ctx.globalAlpha=1;
+      ctx.fillStyle='#fff';ctx.font='700 17px Quicksand, sans-serif';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText('✨ Rasca aquí ✨',w/2,h/2);}
+    function rasca(e){if(listo)return;const r=cv.getBoundingClientRect(),p={x:e.clientX-r.left,y:e.clientY-r.top};tocado=true;
+      ctx.globalCompositeOperation='destination-out';ctx.lineCap='round';ctx.lineWidth=40;ctx.beginPath();
+      if(ant){ctx.moveTo(ant.x,ant.y);ctx.lineTo(p.x,p.y);ctx.stroke();}else{ctx.arc(p.x,p.y,20,0,7);ctx.fill();}ant=p;
+      if(++movs%8===0)revisa();}
+    function revisa(){if(listo)return;const d=ctx.getImageData(0,0,cv.width,cv.height).data;let vac=0,tot=0;for(let i=3;i<d.length;i+=96){tot++;if(d[i]<20)vac++;}
+      if(vac/tot>.5){listo=true;v.classList.add('listo');campanita();const r=v.getBoundingClientRect();confeti(70,r.left+r.width/2,r.top+r.height/2);}}
+    cv.addEventListener('pointerdown',e=>{raspando=true;ant=null;try{cv.setPointerCapture(e.pointerId);}catch(_){}audio();rasca(e);});
+    cv.addEventListener('pointermove',e=>{if(raspando)rasca(e);});
+    const fin=()=>{if(raspando){raspando=false;ant=null;revisa();}};cv.addEventListener('pointerup',fin);cv.addEventListener('pointercancel',fin);
+    pinta();addEventListener('resize',()=>{if(!tocado)pinta();});});
+})();
+
+/* =========================================================
+   PREGUNTA CON BOTÓN "NO" QUE SE ESCAPA
+   ========================================================= */
+(() => {
+  const si=$('#btnSi'),no=$('#btnNo');let esc=1,i=0,resp=false;
+  const FR=['¿Segura? 🥺','Piénsalo bien 🦖','¡No se puede! 😝','Error 404 💜','Ese botón está roto','Intenta el otro 👉','Nop 🙈','Ni lo intentes 😌'];
+  const pon=(b,s)=>b.style.transform=`translate(-50%,-50%) scale(${s})`;pon(si,1);pon(no,1);
+  function huye(e){if(e&&e.cancelable)e.preventDefault();if(resp)return;const z=$('#preguntaZona'),zw=z.clientWidth,zh=z.clientHeight,bw=no.offsetWidth+10,bh=no.offsetHeight+10,sx=zw*.32,sy=zh/2;let x,y,n=0;
+    do{x=rnd(bw/2,Math.max(bw/2+1,zw-bw/2));y=rnd(bh/2,zh-bh/2);n++;}while(n<60&&Math.hypot(x-sx,y-sy)<(si.offsetWidth*esc)/2+bw/2);
+    no.style.left=x+'px';no.style.top=y+'px';no.textContent=FR[i++%FR.length];esc=Math.min(2.2,esc+.15);pon(si,esc);nota(300+rnd(0,200),0,.08,.06);}
+  no.addEventListener('pointerenter',e=>{if(e.pointerType==='mouse')huye();});
+  no.addEventListener('pointerdown',huye);no.addEventListener('click',huye);
+  si.onclick=()=>{if(resp)return;resp=true;audio();no.style.opacity=0;no.style.pointerEvents='none';$('#preguntaResp').style.opacity=1;confeti(220);fuegos(8);lluviaCorazones(50);campanita();};
+})();
+
+/* =========================================================
+   DINO QUE PASEA
+   ========================================================= */
+(() => {
+  const d=$('#dino');function pasea(){d.classList.remove('camina');void d.offsetWidth;d.classList.add('camina');}
+  setTimeout(pasea,6000);d.addEventListener('animationend',e=>{if(e.animationName==='camina')setTimeout(pasea,rnd(10000,20000));});
+  d.onclick=()=>{$('#globo').classList.add('ver');campanita();const r=d.getBoundingClientRect();
+    for(let k=0;k<10;k++)parts.push({t:Math.random()<.6?'corazon':'estrella',x:r.left+20,y:r.top,vx:rnd(-2,2),vy:rnd(-3,-1),v:45,c:k%2?'#ff2a4f':'#ffd36e',s:rnd(6,12)});arrancaFx();
+    setTimeout(()=>$('#globo').classList.remove('ver'),2200);};
+})();
+</script>
+</body>
+</html>
